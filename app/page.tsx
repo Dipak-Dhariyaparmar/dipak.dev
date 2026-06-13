@@ -1,38 +1,44 @@
-import { ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { ArrowUpRight, Linkedin, Mail } from "lucide-react";
 import Link from "next/link";
 import { AnimatedCounter } from "@/components/animated-counter";
 import { HeroCanvas } from "@/components/hero-canvas";
 import { IdentityScroll } from "@/components/identity-scroll";
 import { MotionSection } from "@/components/motion-section";
-import { buildAreas, projects } from "@/lib/content";
+import { buildAreas, dashboardSignals, projects, writingNotes } from "@/lib/content";
 
 const headline = "I BUILD SOFTWARE THAT PEOPLE ACTUALLY USE.";
 
 export default function HomePage() {
   return (
     <main className="overflow-hidden">
-      <section className="relative min-h-screen pt-16">
+      <section className="relative min-h-screen pt-20 sm:pt-24">
         <div className="absolute inset-0 grid-lines opacity-60" aria-hidden="true" />
         <HeroCanvas />
-        <div className="section-shell relative flex min-h-[calc(100vh-4rem)] items-center">
+        <div className="section-shell relative flex min-h-[calc(100vh-6rem)] items-center">
           <div className="max-w-6xl">
-            <p className="eyebrow mb-7">Full Stack Software Engineer</p>
-            <h1 className="max-w-6xl text-5xl font-black leading-[0.88] text-balance sm:text-7xl md:text-8xl lg:text-[8.7rem]">
+            <p className="mb-4 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.045] px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-fog/68 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl">
+              <span className="h-1.5 w-1.5 rounded-full bg-signal shadow-[0_0_16px_rgba(110,231,183,0.75)]" />
+              Full Stack Software Engineer
+            </p>
+            <h1 className="max-w-5xl text-5xl font-black leading-[0.92] text-balance sm:text-6xl md:text-7xl lg:text-[clamp(4.7rem,7vw,7.2rem)]">
               {headline.split(" ").map((word, index) => (
                 <span
                   key={`${word}-${index}`}
-                  className="mr-[0.18em] inline-block animate-[fadeIn_0.8s_ease_forwards]"
+                  className="mr-[0.16em] inline-block animate-[fadeIn_0.8s_ease_forwards]"
                   style={{ animationDelay: `${index * 70}ms`, opacity: 0 }}
                 >
                   {word}
                 </span>
               ))}
             </h1>
-            <p className="mt-8 max-w-3xl text-lg leading-8 text-fog/70 sm:text-xl">
+            <p className="mt-5 max-w-3xl text-base leading-7 text-fog/70 sm:text-lg">
               Specializing in scalable systems, AI-powered products, real-time experiences, and modern web applications.
             </p>
-            <div className="mt-10 flex flex-wrap gap-3">
-              <Link href="/work" className="focus-ring inline-flex items-center gap-2 bg-fog px-5 py-3 text-sm font-bold text-ink">
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link href="/hire-me" className="focus-ring inline-flex items-center gap-2 bg-fog px-5 py-3 text-sm font-bold text-ink">
+                Hire Me <ArrowUpRight size={16} />
+              </Link>
+              <Link href="/work" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 text-sm font-bold">
                 Explore Work <ArrowUpRight size={16} />
               </Link>
               <Link href="/connect" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 text-sm font-bold">
@@ -112,9 +118,12 @@ export default function HomePage() {
             <h2 className="mt-5 text-4xl font-black sm:text-6xl">Writing that documents the thinking behind the build.</h2>
           </div>
           <div className="grid gap-3">
-            {["System design notes for product engineers", "How AI features become real workflows", "What production APIs teach you"].map((title) => (
-              <Link key={title} href="/writing" className="panel flex items-center justify-between p-5">
-                <span>{title}</span>
+            {writingNotes.slice(0, 3).map((article) => (
+              <Link key={article.title} href="/writing" className="panel flex items-center justify-between gap-4 p-5">
+                <span>
+                  <span className="block font-semibold">{article.title}</span>
+                  <span className="mt-1 block text-sm text-fog/45">{article.date} / {article.read}</span>
+                </span>
                 <ArrowUpRight size={17} />
               </Link>
             ))}
@@ -124,16 +133,13 @@ export default function HomePage() {
 
       <MotionSection className="py-28">
         <div className="section-shell">
-          <p className="eyebrow">Live Developer Dashboard</p>
+          <p className="eyebrow">Developer Signal</p>
           <div className="mt-8 grid gap-4 lg:grid-cols-3">
-            {["GitHub Activity", "LeetCode Stats", "Current Technologies"].map((title) => (
-              <div key={title} className="panel min-h-56 p-6">
-                <h3 className="text-2xl font-black">{title}</h3>
-                <div className="mt-8 space-y-3 text-sm text-fog/62">
-                  <p className="h-2 w-4/5 bg-white/15" />
-                  <p className="h-2 w-2/3 bg-white/10" />
-                  <p className="h-2 w-5/6 bg-white/10" />
-                </div>
+            {dashboardSignals.map((item) => (
+              <div key={item.title} className="panel min-h-56 p-6">
+                <p className="text-sm text-signal">{item.title}</p>
+                <h3 className="mt-5 text-2xl font-black">{item.value}</h3>
+                <p className="mt-6 leading-7 text-fog/62">{item.copy}</p>
               </div>
             ))}
           </div>
@@ -153,11 +159,11 @@ export default function HomePage() {
             <Link href="/connect" className="focus-ring inline-flex items-center gap-2 bg-fog px-5 py-3 font-bold text-ink">
               <Mail size={17} /> Contact
             </Link>
-            <Link href="https://www.linkedin.com/" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 font-bold">
+            <Link href="https://www.linkedin.com/in/dipak-dhariyaparmar-034a66299/" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 font-bold">
               <Linkedin size={17} /> LinkedIn
             </Link>
-            <Link href="https://github.com/" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 font-bold">
-              <Github size={17} /> GitHub
+            <Link href="mailto:dipakdhariyaparmar@gmail.com" className="focus-ring inline-flex items-center gap-2 border border-line px-5 py-3 font-bold">
+              <Mail size={17} /> Email
             </Link>
           </div>
         </div>

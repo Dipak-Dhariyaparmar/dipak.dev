@@ -6,9 +6,9 @@ const responses: Record<string, string> = {
   help: "Commands: about, work, writing, contact, resume, help",
   about: "Dipak is a full stack software engineer focused on scalable systems, AI products, and real production software.",
   work: "RiseMind, MyVitalView, RedSand, HypeFresh. Open /work for case studies.",
-  writing: "Open /writing for engineering notes and Medium links.",
+  writing: "Open /writing for engineering notes on architecture, AI workflows, APIs, and internal tools.",
   contact: "Open /connect to reach Dipak.",
-  resume: "Resume link can be connected in the CTA once the PDF is available."
+  resume: "For resume or collaboration details, email dipakdhariyaparmar@gmail.com or book a call at /hire-me."
 };
 
 export default function OSPage() {

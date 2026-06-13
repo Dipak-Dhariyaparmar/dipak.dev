@@ -6,8 +6,8 @@ export default function WorkPage() {
     <main className="pb-24">
       <PageHero
         eyebrow="Work"
-        title="Product case studies with engineering depth."
-        copy="Each build is treated like a real product: problem, architecture, UX tradeoffs, delivery pressure, and what changed because the software exists."
+        title="Outcome-driven case studies with engineering depth."
+        copy="Each build is framed like a real product engagement: challenge, solution, architecture, trade-offs, business impact, and what the work taught me about shipping better software."
       />
       <section className="section-shell mt-20 grid gap-12">
         {projects.map((project) => (
@@ -30,18 +30,30 @@ export default function WorkPage() {
                 </div>
               </div>
             </div>
-            <div className="grid gap-6 border-t border-line p-7 md:grid-cols-3">
+            <div className="grid gap-6 border-t border-line p-7 md:grid-cols-2 lg:grid-cols-3">
               <div>
-                <h3 className="font-black">Problem</h3>
+                <h3 className="font-black">Challenge</h3>
                 <p className="mt-3 leading-7 text-fog/62">{project.challenge}</p>
+              </div>
+              <div>
+                <h3 className="font-black">Solution</h3>
+                <p className="mt-3 leading-7 text-fog/62">{project.solution}</p>
               </div>
               <div>
                 <h3 className="font-black">Architecture</h3>
                 <p className="mt-3 leading-7 text-fog/62">{project.architecture}</p>
               </div>
               <div>
-                <h3 className="font-black">Lesson</h3>
+                <h3 className="font-black">Trade-Offs</h3>
+                <p className="mt-3 leading-7 text-fog/62">{project.tradeoffs}</p>
+              </div>
+              <div>
+                <h3 className="font-black">Business Impact</h3>
                 <p className="mt-3 leading-7 text-fog/62">{project.impact}</p>
+              </div>
+              <div>
+                <h3 className="font-black">Technical Learnings</h3>
+                <p className="mt-3 leading-7 text-fog/62">{project.learnings}</p>
               </div>
             </div>
           </article>

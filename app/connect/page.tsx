@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Send } from "lucide-react";
+import { Clock, Github, Linkedin, Mail, Send, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { socials } from "@/lib/content";
@@ -9,9 +9,26 @@ export default function ConnectPage() {
       <PageHero
         eyebrow="Connect"
         title="Bring a product, system, or serious idea."
-        copy="For founder conversations, engineering roles, product builds, and collaborations where quality matters."
+        copy="For founder conversations, freelance projects, contract engineering work, technical consulting, and collaborations where product quality matters."
       />
-      <section className="section-shell mt-20 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
+      <section className="section-shell mt-20 grid gap-4 md:grid-cols-3">
+        <div className="panel p-5">
+          <Clock className="text-signal" size={20} />
+          <h2 className="mt-6 text-2xl font-black">Response Time</h2>
+          <p className="mt-3 leading-7 text-fog/62">Typically replies within 24 hours.</p>
+        </div>
+        <div className="panel p-5">
+          <Sparkles className="text-signal" size={20} />
+          <h2 className="mt-6 text-2xl font-black">Availability</h2>
+          <p className="mt-3 leading-7 text-fog/62">Open to freelance and contract opportunities.</p>
+        </div>
+        <div className="panel p-5">
+          <Mail className="text-signal" size={20} />
+          <h2 className="mt-6 text-2xl font-black">Preferred Contact</h2>
+          <p className="mt-3 leading-7 text-fog/62">LinkedIn and Email are best for serious project conversations.</p>
+        </div>
+      </section>
+      <section className="section-shell mt-8 grid gap-8 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="grid content-start gap-3">
           {socials.map((social) => (
             <Link key={social.label} href={social.href} className="panel flex items-center justify-between p-5">
